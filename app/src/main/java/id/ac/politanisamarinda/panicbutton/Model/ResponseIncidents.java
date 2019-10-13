@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 public class ResponseIncidents{
 
 	@SerializedName("data")
-	private List<DataItem> data;
+	private List<Incident> data;
 
 	@SerializedName("success")
 	private boolean success;
@@ -14,11 +14,11 @@ public class ResponseIncidents{
 	@SerializedName("message")
 	private String message;
 
-	public void setData(List<DataItem> data){
+	public void setData(List<Incident> data){
 		this.data = data;
 	}
 
-	public List<DataItem> getData(){
+	public List<Incident> getData(){
 		return data;
 	}
 

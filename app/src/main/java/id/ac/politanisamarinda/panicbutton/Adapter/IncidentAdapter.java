@@ -16,19 +16,19 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import id.ac.politanisamarinda.panicbutton.Main2Activity;
-import id.ac.politanisamarinda.panicbutton.Model.DataItem;
+
+import id.ac.politanisamarinda.panicbutton.Model.Incident;
 import id.ac.politanisamarinda.panicbutton.Model.DataLogoIncidents;
 import id.ac.politanisamarinda.panicbutton.R;
 
 public class IncidentAdapter extends RecyclerView.Adapter<IncidentAdapter.IncidentViewHolder> {
-    private List<DataItem> Incidents;
+    private List<Incident> Incidents;
     private ArrayList<DataLogoIncidents> dataLogoIncidents;
     private Context context;
     private int rowLayout;
 
     public String lat, lon;
-    public IncidentAdapter(List<DataItem> Incidents, ArrayList<DataLogoIncidents> dataLogoIncidents ,int rowLayout, Context context,String lon, String lat){
+    public IncidentAdapter(List<Incident> Incidents, ArrayList<DataLogoIncidents> dataLogoIncidents , int rowLayout, Context context, String lon, String lat){
         this.Incidents = Incidents;
         this.context = context;
         this.rowLayout = rowLayout;

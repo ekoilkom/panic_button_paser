@@ -9,8 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import id.ac.politanisamarinda.panicbutton.API.EndPoint;
 import id.ac.politanisamarinda.panicbutton.API.RetrofitClient;
-import id.ac.politanisamarinda.panicbutton.Adapter.IncidentAdapter;
-import id.ac.politanisamarinda.panicbutton.Model.DataItem;
+import id.ac.politanisamarinda.panicbutton.Model.Incident;
 import id.ac.politanisamarinda.panicbutton.Model.DataLogoIncidents;
 import id.ac.politanisamarinda.panicbutton.Model.ResponseIncidents;
 import id.ac.politanisamarinda.panicbutton.Service.ShakeService;
@@ -106,7 +105,7 @@ public class Main2Activity extends AppCompatActivity implements EasyPermissions.
             call.enqueue(new Callback<ResponseIncidents>() {
                 @Override
                 public void onResponse(Call<ResponseIncidents> call, Response<ResponseIncidents> response) {
-                    List<DataItem> incident = response.body().getData();
+                    List<Incident> incident = response.body().getData();
                     //adapter = new IncidentAdapter(incident, modelItemsList, R.layout.cardview_2 , getApplicationContext(), lon, lat);
                     //rv.setAdapter( adapter);
 

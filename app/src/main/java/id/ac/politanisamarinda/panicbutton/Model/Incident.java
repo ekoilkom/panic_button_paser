@@ -2,7 +2,7 @@ package id.ac.politanisamarinda.panicbutton.Model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class DataItem{
+public class Incident {
 
 	@SerializedName("nama")
 	private String nama;
@@ -62,7 +62,7 @@ public class DataItem{
 	@Override
  	public String toString(){
 		return 
-			"DataItem{" + 
+			"Incident{" +
 			"nama = '" + nama + '\'' + 
 			",updated_at = '" + updatedAt + '\'' + 
 			",created_at = '" + createdAt + '\'' + 
