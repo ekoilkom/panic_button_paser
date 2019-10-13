@@ -11,7 +11,6 @@ import id.ac.politanisamarinda.panicbutton.API.EndPoint;
 import id.ac.politanisamarinda.panicbutton.API.RetrofitClient;
 import id.ac.politanisamarinda.panicbutton.Adapter.IncidentAdapter;
 import id.ac.politanisamarinda.panicbutton.Model.Incident;
-import id.ac.politanisamarinda.panicbutton.Model.DataLogoIncidents;
 import id.ac.politanisamarinda.panicbutton.Model.ResponseIncidents;
 import id.ac.politanisamarinda.panicbutton.Service.ShakeService;
 import pub.devrel.easypermissions.AfterPermissionGranted;
@@ -52,19 +51,12 @@ public class InsidentActivity extends AppCompatActivity implements EasyPermissio
 
     private String lang, lat;
     private FusedLocationProviderClient client;
-    ArrayList<DataLogoIncidents> modelItemsList =  new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_incident);
         requestPermission();
-
-
-        //Menambah data logo ke dalam class DataLogoIncident.java
-        modelItemsList.add(new DataLogoIncidents(R.drawable.logo_kebakaran));
-        modelItemsList.add(new DataLogoIncidents(R.drawable.logo_banjir));
-        modelItemsList.add(new DataLogoIncidents(R.drawable.logo_longsor));
 
         client = LocationServices.getFusedLocationProviderClient(this);
 

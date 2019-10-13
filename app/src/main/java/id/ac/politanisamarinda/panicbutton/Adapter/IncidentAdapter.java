@@ -18,12 +18,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import id.ac.politanisamarinda.panicbutton.Model.Incident;
-import id.ac.politanisamarinda.panicbutton.Model.DataLogoIncidents;
 import id.ac.politanisamarinda.panicbutton.R;
 
 public class IncidentAdapter extends RecyclerView.Adapter<IncidentAdapter.IncidentViewHolder> {
     private List<Incident> incidents =new ArrayList<>();
-    private ArrayList<DataLogoIncidents> dataLogoIncidents;
     private Context context;
 
     public String lat, lang;

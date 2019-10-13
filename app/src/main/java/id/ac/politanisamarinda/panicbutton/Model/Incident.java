@@ -13,11 +13,14 @@ public class Incident {
 	@SerializedName("created_at")
 	private String createdAt;
 
+	@SerializedName("foto")
+	private String foto;
+
 	@SerializedName("id")
 	private int id;
 
 	@SerializedName("deleted_at")
-	private Object deletedAt;
+	private String deletedAt;
 
 	public void setNama(String nama){
 		this.nama = nama;
@@ -51,12 +54,20 @@ public class Incident {
 		return id;
 	}
 
-	public void setDeletedAt(Object deletedAt){
+	public void setDeletedAt(String deletedAt){
 		this.deletedAt = deletedAt;
 	}
 
-	public Object getDeletedAt(){
+	public String getDeletedAt(){
 		return deletedAt;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
 	@Override
