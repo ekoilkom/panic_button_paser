@@ -49,8 +49,6 @@ public class IncidentAdapter extends RecyclerView.Adapter<IncidentAdapter.Incide
     public void onBindViewHolder(@NonNull final IncidentViewHolder holder, int position) {
         holder.mText.setText(Incidents.get(position).getNama());
         holder.imageView.setImageResource(dataLogoIncidents.get(position).getmImageResource());
-
-
     }
 
     @Override

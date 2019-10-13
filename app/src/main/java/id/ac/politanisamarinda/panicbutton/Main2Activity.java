@@ -13,6 +13,7 @@ import id.ac.politanisamarinda.panicbutton.Adapter.IncidentAdapter;
 import id.ac.politanisamarinda.panicbutton.Model.DataItem;
 import id.ac.politanisamarinda.panicbutton.Model.DataLogoIncidents;
 import id.ac.politanisamarinda.panicbutton.Model.ResponseIncidents;
+import id.ac.politanisamarinda.panicbutton.Service.ShakeService;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;
@@ -86,6 +87,10 @@ public class Main2Activity extends AppCompatActivity implements EasyPermissions.
         /**getSupportActionBar().setTitle(Html.fromHtml("<font color=\"black\">" + getString(R.string.app_name) + "</font>"));
         ActionBar bar = getSupportActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#000000")));**/
+
+        //untuk start service
+        Intent intent = new Intent(Main2Activity.this, ShakeService.class);
+        startService(intent);
     }
 
 
@@ -102,8 +107,8 @@ public class Main2Activity extends AppCompatActivity implements EasyPermissions.
                 @Override
                 public void onResponse(Call<ResponseIncidents> call, Response<ResponseIncidents> response) {
                     List<DataItem> incident = response.body().getData();
-                    adapter = new IncidentAdapter(incident, modelItemsList, R.layout.cardview_2 , getApplicationContext(), lon, lat);
-                    rv.setAdapter( adapter);
+                    //adapter = new IncidentAdapter(incident, modelItemsList, R.layout.cardview_2 , getApplicationContext(), lon, lat);
+                    //rv.setAdapter( adapter);
 
                 }
 
