@@ -22,79 +22,50 @@ import id.ac.politanisamarinda.panicbutton.Model.DataLogoIncidents;
 import id.ac.politanisamarinda.panicbutton.R;
 
 public class IncidentAdapter extends RecyclerView.Adapter<IncidentAdapter.IncidentViewHolder> {
-    private List<Incident> Incidents;
+    private List<Incident> incidents =new ArrayList<>();
     private ArrayList<DataLogoIncidents> dataLogoIncidents;
     private Context context;
-    private int rowLayout;
 
-    public String lat, lon;
-    public IncidentAdapter(List<Incident> Incidents, ArrayList<DataLogoIncidents> dataLogoIncidents , int rowLayout, Context context, String lon, String lat){
-        this.Incidents = Incidents;
+    public String lat, lang;
+    public IncidentAdapter(Context context){
         this.context = context;
-        this.rowLayout = rowLayout;
-        this.lat = lat;
-        this.lon = lon;
-        this.dataLogoIncidents = dataLogoIncidents;
+    }
+
+    public void setIncidents(List<Incident> incidents) {
+        this.incidents = incidents;
+        notifyDataSetChanged();
     }
 
     @NonNull
     @Override
     public IncidentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(rowLayout,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_incident,parent,false);
         IncidentViewHolder v = new IncidentViewHolder(view);
         return v;
     }
 
     @Override
     public void onBindViewHolder(@NonNull final IncidentViewHolder holder, int position) {
-        holder.mText.setText(Incidents.get(position).getNama());
-        holder.imageView.setImageResource(dataLogoIncidents.get(position).getmImageResource());
+        holder.textIncident.setText(incidents.get(position).getNama());
+        //holder.imageIncident.setImageResource(dataLogoIncidents.get(position).getmImageResource());
     }
 
     @Override
     public int getItemCount() {
-        return Incidents.size();
+        return incidents.size();
     }
 
     public class IncidentViewHolder extends RecyclerView.ViewHolder{
-        public TextView mText, mtext2;
         public View view;
-        public String tanggal;
-        public ImageView imageView;
-        private Handler handler = new Handler();
+        public TextView textIncident;
+        public ImageView imageIncident;
 
         public IncidentViewHolder(@NonNull View itemView) {
             super(itemView);
             this.view = itemView;
-            handler.postDelayed(runnable,1000);
-            mText = itemView.findViewById(R.id.textView);
-            mtext2 = itemView.findViewById(R.id.textView4);
-            imageView = itemView.findViewById(R.id.imageView);
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int position = getAdapterPosition();
-                    if(position != RecyclerView.NO_POSITION){
-                        Toast.makeText(v.getContext(), "lat :" + lat +
-                                " long :" + lon +
-                                " id :" + Incidents.get(position).getId() +
-                                " Date :" + tanggal , Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
+            textIncident = itemView.findViewById(R.id.textIncident);
+            imageIncident = itemView.findViewById(R.id.imageIncident);
         }
-
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                Calendar c1 = Calendar.getInstance();
-                SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy/M/d h:m:s");
-                String strdate1 = sdf1.format(c1.getTime());
-                tanggal = strdate1;
-                handler.postDelayed(this, 1000);
-            }
-        };
     }
 
 }

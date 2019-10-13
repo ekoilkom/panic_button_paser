@@ -59,7 +59,7 @@ public class PanicWidget extends AppWidgetProvider {
                 @Override
                 public void onResponse(Call<ResponseIncidents> call, Response<ResponseIncidents> response) {
                     List<Incident> incident = response.body().getData();
-                    //adapter = new IncidentAdapter(incident, modelItemsList, R.layout.cardview_2 , getApplicationContext(), lon, lat);
+                    //adapter = new IncidentAdapter(incident, modelItemsList, R.layout.cardview_2 , getApplicationContext(), lang, lat);
                     //rv.setAdapter( adapter);
 
                 }

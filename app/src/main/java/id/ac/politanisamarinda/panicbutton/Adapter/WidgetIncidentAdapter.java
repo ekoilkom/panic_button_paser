@@ -5,18 +5,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import java.util.List;
+
+import id.ac.politanisamarinda.panicbutton.Model.Incident;
+
 public class WidgetIncidentAdapter extends BaseAdapter {
 
     private final Context mContext;
-    private final Book[] books;
+    private final List<Incident> data;
 
-    public WidgetIncidentAdapter(Context mContext) {
+    public WidgetIncidentAdapter(Context mContext,List<Incident> data) {
         this.mContext = mContext;
+        this.data=data;
     }
 
     @Override
     public int getCount() {
-        return ;
+        return data.size();
     }
 
     @Override

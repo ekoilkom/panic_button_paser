@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import id.ac.politanisamarinda.panicbutton.API.EndPoint;
 import id.ac.politanisamarinda.panicbutton.API.RetrofitClient;
+import id.ac.politanisamarinda.panicbutton.Adapter.IncidentAdapter;
 import id.ac.politanisamarinda.panicbutton.Model.Incident;
 import id.ac.politanisamarinda.panicbutton.Model.DataLogoIncidents;
 import id.ac.politanisamarinda.panicbutton.Model.ResponseIncidents;
@@ -41,22 +42,22 @@ import java.util.List;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
-public class Main2Activity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks {
+public class InsidentActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks {
     RecyclerView rv;
-    RecyclerView.Adapter adapter;
+    IncidentAdapter adapter;
     TextView text;
     Button button;
     Toolbar toolbar;
     Menu menu = null;
 
-    private String lon, lat;
+    private String lang, lat;
     private FusedLocationProviderClient client;
     ArrayList<DataLogoIncidents> modelItemsList =  new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_incident);
         requestPermission();
 
 
@@ -77,7 +78,8 @@ public class Main2Activity extends AppCompatActivity implements EasyPermissions.
         //Mengatur tampilan recycleView
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new GridLayoutManager(this,2));
-
+        adapter = new IncidentAdapter(this);
+        rv.setAdapter(adapter);
         setSupportActionBar(toolbar);
 
         getIncidents();
@@ -88,13 +90,9 @@ public class Main2Activity extends AppCompatActivity implements EasyPermissions.
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#000000")));**/
 
         //untuk start service
-        Intent intent = new Intent(Main2Activity.this, ShakeService.class);
+        Intent intent = new Intent(InsidentActivity.this, ShakeService.class);
         startService(intent);
     }
-
-
-
-
 
 
     //Menampilkan recycleView dari Adapter
@@ -105,10 +103,8 @@ public class Main2Activity extends AppCompatActivity implements EasyPermissions.
             call.enqueue(new Callback<ResponseIncidents>() {
                 @Override
                 public void onResponse(Call<ResponseIncidents> call, Response<ResponseIncidents> response) {
-                    List<Incident> incident = response.body().getData();
-                    //adapter = new IncidentAdapter(incident, modelItemsList, R.layout.cardview_2 , getApplicationContext(), lon, lat);
-                    //rv.setAdapter( adapter);
-
+                    List<Incident> incidents = response.body().getData();
+                    adapter.setIncidents(incidents);
                 }
 
                 @Override
@@ -131,7 +127,7 @@ public class Main2Activity extends AppCompatActivity implements EasyPermissions.
         {
             Toast.makeText(this,"Location Detected", Toast.LENGTH_SHORT).show();
             //Mendapatkan lokasi latitude dan longitude
-            client.getLastLocation().addOnSuccessListener(Main2Activity.this, new OnSuccessListener<Location>() {
+            client.getLastLocation().addOnSuccessListener(InsidentActivity.this, new OnSuccessListener<Location>() {
                 @Override
                 public void onSuccess(Location location) {
                     if (location != null) {
@@ -139,10 +135,10 @@ public class Main2Activity extends AppCompatActivity implements EasyPermissions.
                         double dlon = location.getLongitude();
 
                         lat = Double.toString(dlat);
-                        lon = Double.toString(dlon);
+                        lang = Double.toString(dlon);
                     }else {
                         lat = "Tidak dapat lat";
-                        lon = "Tidak dapat long";
+                        lang = "Tidak dapat long";
                     }
 
                 }
@@ -194,7 +190,7 @@ public class Main2Activity extends AppCompatActivity implements EasyPermissions.
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                client.getLastLocation().addOnSuccessListener(Main2Activity.this, new OnSuccessListener<Location>() {
+//                client.getLastLocation().addOnSuccessListener(InsidentActivity.this, new OnSuccessListener<Location>() {
 //                    @Override
 //                    public void onSuccess(Location location) {
 //                        if (location != null) {
