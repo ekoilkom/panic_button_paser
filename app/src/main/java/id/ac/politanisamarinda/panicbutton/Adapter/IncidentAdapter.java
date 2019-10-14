@@ -47,7 +47,6 @@ public class IncidentAdapter extends RecyclerView.Adapter<IncidentAdapter.Incide
     @Override
     public void onBindViewHolder(@NonNull final IncidentViewHolder holder, int position) {
         holder.textIncident.setText(incidents.get(position).getNama());
-        holder.textIncident.setEnabled(false);
         Picasso.get().load("http://panic.britech.id/"+incidents.get(position).getFoto()).into(holder.imageIncident);
     }
 
