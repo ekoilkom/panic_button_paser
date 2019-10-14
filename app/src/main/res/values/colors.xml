@@ -2,7 +2,11 @@
 <resources>
     <color name="colorPrimary">#F7F7F7</color>
     <color name="colorPrimaryDark">#535353</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#E51313</color>
     <color name="colorNavigationText">#000</color>
     <color name="colorBarNavigasi">#3E000000</color>
+    <color name="colorSwitch">#64DE3E</color>
+    <color name="colorSwitch2">#B7FFA2</color>
+    <color name="colorBgCardview">#AFAFAF</color>
+    <color name="colorSwitch3">#E77E7E</color>
 </resources>

@@ -111,7 +111,7 @@ public class InsidentActivity extends AppCompatActivity implements EasyPermissio
                 @Override
                 public void onResponse(Call<ResponseIncidents> call, Response<ResponseIncidents> response) {
                     List<Incident> incidents = response.body().getData();
-                    adapter.setIncidents(incidents);
+                    adapter.setIncidents(incidents, lat, lang);
                 }
 
                 @Override
@@ -145,7 +145,7 @@ public class InsidentActivity extends AppCompatActivity implements EasyPermissio
                         lang = Double.toString(dlon);
                     }else {
                         lat = "Tidak dapat lat";
-                        lang = "Tidak dapat long";
+                        lang = "Tidak dapat lang";
                     }
 
                 }

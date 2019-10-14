@@ -31,8 +31,10 @@ public class IncidentAdapter extends RecyclerView.Adapter<IncidentAdapter.Incide
         this.context = context;
     }
 
-    public void setIncidents(List<Incident> incidents) {
+    public void setIncidents(List<Incident> incidents, String lat,String lang) {
         this.incidents = incidents;
+        this.lat = lat;
+        this.lang = lang;
         notifyDataSetChanged();
     }
 
@@ -59,13 +61,39 @@ public class IncidentAdapter extends RecyclerView.Adapter<IncidentAdapter.Incide
         public View view;
         public TextView textIncident;
         public ImageView imageIncident;
+        public String tanggal;
+        private Handler handler = new Handler();
 
         public IncidentViewHolder(@NonNull View itemView) {
             super(itemView);
             this.view = itemView;
+            handler.postDelayed(runnable,1000);
             textIncident = itemView.findViewById(R.id.textIncident);
             imageIncident = itemView.findViewById(R.id.imageIncident);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if(position != RecyclerView.NO_POSITION){
+                        Toast.makeText(v.getContext(), "lat :" + lat +
+                                " long :" + lang +
+                                " id :" + incidents.get(position).getId() +
+                                " Date :" + tanggal , Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
         }
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                Calendar c1 = Calendar.getInstance();
+                SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy/M/d h:m:s");
+                String strdate1 = sdf1.format(c1.getTime());
+                tanggal = strdate1;
+                handler.postDelayed(this, 1000);
+            }
+        };
     }
 
 }
