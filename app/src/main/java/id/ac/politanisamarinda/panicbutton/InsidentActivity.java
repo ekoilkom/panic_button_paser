@@ -6,11 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import id.ac.politanisamarinda.panicbutton.API.EndPoint;
 import id.ac.politanisamarinda.panicbutton.API.RetrofitClient;
 import id.ac.politanisamarinda.panicbutton.Adapter.IncidentAdapter;
+import id.ac.politanisamarinda.panicbutton.Adapter.SimpleDividerItemDecoration;
 import id.ac.politanisamarinda.panicbutton.Model.Incident;
 import id.ac.politanisamarinda.panicbutton.Model.ResponseIncidents;
 import id.ac.politanisamarinda.panicbutton.Service.ShakeService;
@@ -76,6 +78,7 @@ public class InsidentActivity extends AppCompatActivity implements EasyPermissio
         rv.setLayoutManager(new GridLayoutManager(this,2));
         adapter = new IncidentAdapter(this);
         rv.setAdapter(adapter);
+        rv.addItemDecoration(new SimpleDividerItemDecoration(this));
 
         setSupportActionBar(toolbar);
 
