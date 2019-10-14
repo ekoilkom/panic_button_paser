@@ -25,6 +25,7 @@ import id.ac.politanisamarinda.panicbutton.API.EndPoint;
 import id.ac.politanisamarinda.panicbutton.API.RetrofitClient;
 import id.ac.politanisamarinda.panicbutton.Model.Incident;
 import id.ac.politanisamarinda.panicbutton.Model.ResponseIncidents;
+import id.ac.politanisamarinda.panicbutton.Service.ShakeService;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;
@@ -34,7 +35,7 @@ import retrofit2.Response;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
-public class HomeActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks {
+public class HomeActivity extends AppCompatActivity  {
     private final String SELECTED_MENU = "selected_menu";
     private BottomNavigationView navView;
 
@@ -75,19 +76,10 @@ public class HomeActivity extends AppCompatActivity implements EasyPermissions.P
         } else {
             navView.setSelectedItemId(R.id.panic_home);
         }
-    }
 
-    //Fungsi meminta penggunaan lokasi
-    private void requestPermission(){
-        ActivityCompat.requestPermissions(this, new String[]{ACCESS_FINE_LOCATION}, 1);
+        Intent intent = new Intent(HomeActivity.this, ShakeService.class);
+        startService(intent);
     }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
-    }
-
 
     // Ini Adalah Bagian Toolbar
     private void logout() {
@@ -105,23 +97,10 @@ public class HomeActivity extends AppCompatActivity implements EasyPermissions.P
         return super.onOptionsItemSelected(item);
     }
 
-
     @Override
     public boolean onCreateOptionsMenu (Menu menu){
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menubar, menu);
         return super.onCreateOptionsMenu(menu);
-    }
-
-    //metode permission callback
-    @Override
-    public void onPermissionsGranted(int requestCode, @NonNull List<String> perms) {
-
-    }
-    @Override
-    public void onPermissionsDenied(int requestCode, @NonNull List<String> perms) {
-        if(EasyPermissions.somePermissionPermanentlyDenied(this,perms)) {
-            new AppSettingsDialog.Builder(this).build().show();
-        }
     }
 }

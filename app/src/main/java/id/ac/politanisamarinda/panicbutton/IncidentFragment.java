@@ -12,6 +12,7 @@ import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
@@ -33,6 +34,8 @@ import java.util.List;
 import id.ac.politanisamarinda.panicbutton.API.EndPoint;
 import id.ac.politanisamarinda.panicbutton.API.RetrofitClient;
 import id.ac.politanisamarinda.panicbutton.Adapter.IncidentAdapter;
+import id.ac.politanisamarinda.panicbutton.Adapter.SimpleDividerItemDecoration;
+import id.ac.politanisamarinda.panicbutton.InterfaceCallback.IncidentClickListener;
 import id.ac.politanisamarinda.panicbutton.Model.Incident;
 import id.ac.politanisamarinda.panicbutton.Model.ResponseIncidents;
 import pub.devrel.easypermissions.AfterPermissionGranted;
@@ -48,7 +51,7 @@ import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class IncidentFragment extends Fragment {
+public class IncidentFragment extends Fragment implements EasyPermissions.PermissionCallbacks, IncidentClickListener {
 
     RecyclerView rv;
     IncidentAdapter adapter;
@@ -73,7 +76,7 @@ public class IncidentFragment extends Fragment {
 
         switchCompat=view.findViewById(R.id.switch1);
         rv=view.findViewById(R.id.recycle_view);
-
+        requestPermission();
         return view;
     }
 
@@ -83,6 +86,15 @@ public class IncidentFragment extends Fragment {
 
         if(getActivity()!=null){
             client = LocationServices.getFusedLocationProviderClient(getActivity());
+            openPermission();
+
+            rv.setHasFixedSize(true);
+            rv.setLayoutManager(new GridLayoutManager(getActivity(),2));
+            adapter = new IncidentAdapter(this);
+            rv.setAdapter(adapter);
+            rv.addItemDecoration(new SimpleDividerItemDecoration(getContext()));
+
+            getIncidents();
         }
     }
 
@@ -140,4 +152,31 @@ public class IncidentFragment extends Fragment {
         }
     }
 
+    //Fungsi meminta penggunaan lokasi
+    private void requestPermission(){
+        ActivityCompat.requestPermissions(getActivity(), new String[]{ACCESS_FINE_LOCATION}, 1);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
+    }
+
+    //metode permission callback
+    @Override
+    public void onPermissionsGranted(int requestCode, @NonNull List<String> perms) {
+
+    }
+    @Override
+    public void onPermissionsDenied(int requestCode, @NonNull List<String> perms) {
+        if(EasyPermissions.somePermissionPermanentlyDenied(this,perms)) {
+            new AppSettingsDialog.Builder(this).build().show();
+        }
+    }
+
+    @Override
+    public void onItemClick(Incident item) {
+
+    }
 }

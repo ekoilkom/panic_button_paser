@@ -32,6 +32,10 @@
         <activity
             android:name=".InsidentActivity"
             android:theme="@style/AppTheme3">
+        </activity>
+
+        <activity
+            android:name=".HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
