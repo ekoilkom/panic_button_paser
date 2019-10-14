@@ -28,7 +28,7 @@
                 android:resource="@xml/panic_widget_info" />
         </receiver>
 
-        <activity android:name=".MainActivity" />
+        <activity android:name=".LoginActivity" />
         <activity
             android:name=".InsidentActivity"
             android:theme="@style/AppTheme3">
