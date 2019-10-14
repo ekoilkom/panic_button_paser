@@ -3,6 +3,7 @@ package id.ac.politanisamarinda.panicbutton;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -24,11 +25,13 @@ import android.Manifest;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,8 +48,8 @@ public class InsidentActivity extends AppCompatActivity implements EasyPermissio
     RecyclerView rv;
     IncidentAdapter adapter;
     TextView text;
-    Button button;
     Toolbar toolbar;
+    SwitchCompat switchCompat;
     Menu menu = null;
 
     private String lang, lat;
@@ -58,9 +61,10 @@ public class InsidentActivity extends AppCompatActivity implements EasyPermissio
         setContentView(R.layout.activity_incident);
         requestPermission();
 
+        switchCompat=findViewById(R.id.switch1);
+
         client = LocationServices.getFusedLocationProviderClient(this);
 
-        button = findViewById(R.id.button2);
         text = findViewById(R.id.textView3);
         rv = findViewById(R.id.recycle_view);
         toolbar = findViewById(R.id.toolbar);
@@ -72,18 +76,26 @@ public class InsidentActivity extends AppCompatActivity implements EasyPermissio
         rv.setLayoutManager(new GridLayoutManager(this,2));
         adapter = new IncidentAdapter(this);
         rv.setAdapter(adapter);
+
         setSupportActionBar(toolbar);
 
         getIncidents();
 
-
-        /**getSupportActionBar().setTitle(Html.fromHtml("<font color=\"black\">" + getString(R.string.app_name) + "</font>"));
-        ActionBar bar = getSupportActionBar();
-        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#000000")));**/
-
-        //untuk start service
         Intent intent = new Intent(InsidentActivity.this, ShakeService.class);
         startService(intent);
+
+        switchCompat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                setEnableRecyclerView(isChecked);
+            }
+        });
+    }
+    
+    public void setEnableRecyclerView(boolean enable){
+        for(int i=0;i<rv.getChildCount();i++){
+            rv.getChildAt(i).setEnabled(enable);
+        }
     }
 
 
@@ -101,7 +113,7 @@ public class InsidentActivity extends AppCompatActivity implements EasyPermissio
 
                 @Override
                 public void onFailure(Call<ResponseIncidents> call, Throwable t) {
-
+                    Log.d("eror","sa");
                 }
             });
         }
@@ -174,28 +186,6 @@ public class InsidentActivity extends AppCompatActivity implements EasyPermissio
         this.menu = menu;
 
         return super.onCreateOptionsMenu(menu);
-    }
-
-
-
-    private void clickBtn(){
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                client.getLastLocation().addOnSuccessListener(InsidentActivity.this, new OnSuccessListener<Location>() {
-//                    @Override
-//                    public void onSuccess(Location location) {
-//                        if (location != null) {
-//                            double lat = location.getLatitude();
-//                            text.setText(Double.toString(lat));
-//                        }else {
-//                            text.setText("Tidak ada lokasi");
-//                        }
-//
-//                    }
-//                });
-            }
-        });
     }
 
     //metode permission callback

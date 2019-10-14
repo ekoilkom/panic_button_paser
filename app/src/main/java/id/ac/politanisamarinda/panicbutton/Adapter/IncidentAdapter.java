@@ -17,6 +17,8 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import id.ac.politanisamarinda.panicbutton.Model.Incident;
 import id.ac.politanisamarinda.panicbutton.R;
 
@@ -45,7 +47,8 @@ public class IncidentAdapter extends RecyclerView.Adapter<IncidentAdapter.Incide
     @Override
     public void onBindViewHolder(@NonNull final IncidentViewHolder holder, int position) {
         holder.textIncident.setText(incidents.get(position).getNama());
-        //holder.imageIncident.setImageResource(dataLogoIncidents.get(position).getmImageResource());
+        holder.textIncident.setEnabled(false);
+        Picasso.get().load("http://panic.britech.id/"+incidents.get(position).getFoto()).into(holder.imageIncident);
     }
 
     @Override
