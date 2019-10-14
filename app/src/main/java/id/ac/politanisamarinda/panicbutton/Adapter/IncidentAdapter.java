@@ -1,17 +1,13 @@
 package id.ac.politanisamarinda.panicbutton.Adapter;
 
-import android.content.Context;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -19,22 +15,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import id.ac.politanisamarinda.panicbutton.InterfaceCallback.IncidentClickListener;
 import id.ac.politanisamarinda.panicbutton.Model.Incident;
 import id.ac.politanisamarinda.panicbutton.R;
 
 public class IncidentAdapter extends RecyclerView.Adapter<IncidentAdapter.IncidentViewHolder> {
     private List<Incident> incidents =new ArrayList<>();
-    private Context context;
 
-    public String lat, lang;
-    public IncidentAdapter(Context context){
-        this.context = context;
+    IncidentClickListener listener;
+    public IncidentAdapter(IncidentClickListener listener){
+        this.listener = listener;
     }
 
-    public void setIncidents(List<Incident> incidents, String lat,String lang) {
+    public void setIncidents(List<Incident> incidents) {
         this.incidents = incidents;
-        this.lat = lat;
-        this.lang = lang;
         notifyDataSetChanged();
     }
 
@@ -47,9 +41,15 @@ public class IncidentAdapter extends RecyclerView.Adapter<IncidentAdapter.Incide
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final IncidentViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final IncidentViewHolder holder, final int position) {
         holder.textIncident.setText(incidents.get(position).getNama());
         Picasso.get().load("http://panic.britech.id/"+incidents.get(position).getFoto()).into(holder.imageIncident);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onItemClick(incidents.get(position));
+            }
+        });
     }
 
     @Override
@@ -58,7 +58,7 @@ public class IncidentAdapter extends RecyclerView.Adapter<IncidentAdapter.Incide
     }
 
     public class IncidentViewHolder extends RecyclerView.ViewHolder{
-        public View view;
+        public View itemView;
         public TextView textIncident;
         public ImageView imageIncident;
         public String tanggal;
@@ -66,34 +66,11 @@ public class IncidentAdapter extends RecyclerView.Adapter<IncidentAdapter.Incide
 
         public IncidentViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.view = itemView;
-            handler.postDelayed(runnable,1000);
+            this.itemView = itemView;
             textIncident = itemView.findViewById(R.id.textIncident);
             imageIncident = itemView.findViewById(R.id.imageIncident);
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int position = getAdapterPosition();
-                    if(position != RecyclerView.NO_POSITION){
-                        Toast.makeText(v.getContext(), "lat :" + lat +
-                                " long :" + lang +
-                                " id :" + incidents.get(position).getId() +
-                                " Date :" + tanggal , Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
         }
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                Calendar c1 = Calendar.getInstance();
-                SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy/M/d h:m:s");
-                String strdate1 = sdf1.format(c1.getTime());
-                tanggal = strdate1;
-                handler.postDelayed(this, 1000);
-            }
-        };
+
     }
 
 }

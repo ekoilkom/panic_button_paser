@@ -12,6 +12,7 @@ import id.ac.politanisamarinda.panicbutton.API.EndPoint;
 import id.ac.politanisamarinda.panicbutton.API.RetrofitClient;
 import id.ac.politanisamarinda.panicbutton.Adapter.IncidentAdapter;
 import id.ac.politanisamarinda.panicbutton.Adapter.SimpleDividerItemDecoration;
+import id.ac.politanisamarinda.panicbutton.InterfaceCallback.IncidentClickListener;
 import id.ac.politanisamarinda.panicbutton.Model.Incident;
 import id.ac.politanisamarinda.panicbutton.Model.ResponseIncidents;
 import id.ac.politanisamarinda.panicbutton.Service.ShakeService;
@@ -42,7 +43,7 @@ import java.util.List;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
-public class InsidentActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks {
+public class InsidentActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks, IncidentClickListener {
     RecyclerView rv;
     IncidentAdapter adapter;
     TextView text;
@@ -107,7 +108,7 @@ public class InsidentActivity extends AppCompatActivity implements EasyPermissio
                 @Override
                 public void onResponse(Call<ResponseIncidents> call, Response<ResponseIncidents> response) {
                     List<Incident> incidents = response.body().getData();
-                    adapter.setIncidents(incidents, lat, lang);
+                    adapter.setIncidents(incidents);
                 }
 
                 @Override
@@ -204,6 +205,11 @@ public class InsidentActivity extends AppCompatActivity implements EasyPermissio
         if(requestCode == AppSettingsDialog.DEFAULT_SETTINGS_REQ_CODE){
 
         }
+    }
+
+    @Override
+    public void onItemClick(Incident item) {
+
     }
 }
 
