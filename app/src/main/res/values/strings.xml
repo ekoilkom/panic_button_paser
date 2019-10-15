@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Panic Button</string>
+    <string name="app_name"></string>
     <string name="logout">Logout</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>

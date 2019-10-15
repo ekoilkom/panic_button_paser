@@ -75,7 +75,7 @@ public class InsidentActivity extends AppCompatActivity implements EasyPermissio
         rv.setLayoutManager(new GridLayoutManager(this,2));
         adapter = new IncidentAdapter(this);
         rv.setAdapter(adapter);
-        rv.addItemDecoration(new SimpleDividerItemDecoration(this));
+  //      rv.addItemDecoration(new SimpleDividerItemDecoration(this));
 
         setSupportActionBar(toolbar);
 
