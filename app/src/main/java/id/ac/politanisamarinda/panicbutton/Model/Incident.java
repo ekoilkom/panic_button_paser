@@ -2,7 +2,7 @@ package id.ac.politanisamarinda.panicbutton.Model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Incident {
+public class Incident{
 
 	@SerializedName("nama")
 	private String nama;
@@ -10,11 +10,11 @@ public class Incident {
 	@SerializedName("updated_at")
 	private String updatedAt;
 
-	@SerializedName("created_at")
-	private String createdAt;
-
 	@SerializedName("foto")
 	private String foto;
+
+	@SerializedName("created_at")
+	private String createdAt;
 
 	@SerializedName("id")
 	private int id;
@@ -36,6 +36,14 @@ public class Incident {
 
 	public String getUpdatedAt(){
 		return updatedAt;
+	}
+
+	public void setFoto(String foto){
+		this.foto = foto;
+	}
+
+	public String getFoto(){
+		return foto;
 	}
 
 	public void setCreatedAt(String createdAt){
@@ -62,20 +70,13 @@ public class Incident {
 		return deletedAt;
 	}
 
-	public String getFoto() {
-		return foto;
-	}
-
-	public void setFoto(String foto) {
-		this.foto = foto;
-	}
-
 	@Override
  	public String toString(){
 		return 
-			"Incident{" +
+			"Incident{" + 
 			"nama = '" + nama + '\'' + 
 			",updated_at = '" + updatedAt + '\'' + 
+			",foto = '" + foto + '\'' + 
 			",created_at = '" + createdAt + '\'' + 
 			",id = '" + id + '\'' + 
 			",deleted_at = '" + deletedAt + '\'' + 

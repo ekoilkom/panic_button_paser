@@ -1,6 +1,7 @@
 package id.ac.politanisamarinda.panicbutton.API;
 
 import id.ac.politanisamarinda.panicbutton.Model.ResponseIncidents;
+import id.ac.politanisamarinda.panicbutton.Model.ResponseListUserIncident;
 import id.ac.politanisamarinda.panicbutton.Model.ResponseLoginApi;
 import id.ac.politanisamarinda.panicbutton.Model.ResponseUser;
 import id.ac.politanisamarinda.panicbutton.Model.ResponseUserIncident;
@@ -50,6 +51,13 @@ public interface EndPoint {
             @Field("latitude") Double lat,
             @Field("longitude") Double lng
     );
+
+    @GET("api/user_incidents")
+    @Headers({
+            "Accept: Application/json",
+            "Content-Type: Application/json"
+    })
+    Call<ResponseListUserIncident> getListUserIncident(@Header("Authorization") String token);
 //
 //    @POST
 //    createPost(@Body )

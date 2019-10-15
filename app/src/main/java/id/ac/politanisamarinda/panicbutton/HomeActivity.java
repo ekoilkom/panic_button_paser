@@ -1,39 +1,19 @@
 package id.ac.politanisamarinda.panicbutton;
 
-import android.Manifest;
 import android.content.Intent;
-import android.location.Location;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.List;
-
-import id.ac.politanisamarinda.panicbutton.API.EndPoint;
-import id.ac.politanisamarinda.panicbutton.API.RetrofitClient;
-import id.ac.politanisamarinda.panicbutton.Model.Incident;
-import id.ac.politanisamarinda.panicbutton.Model.ResponseIncidents;
 import id.ac.politanisamarinda.panicbutton.Service.ShakeService;
-import pub.devrel.easypermissions.AfterPermissionGranted;
-import pub.devrel.easypermissions.AppSettingsDialog;
-import pub.devrel.easypermissions.EasyPermissions;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
 public class HomeActivity extends AppCompatActivity  {
     private final String SELECTED_MENU = "selected_menu";
@@ -48,7 +28,7 @@ public class HomeActivity extends AppCompatActivity  {
             if (item.getItemId() == R.id.panic_home) {
                 fragment = IncidentFragment.newInstance();
             } else if (item.getItemId() == R.id.list_berita) {
-                fragment = BeritaFragment.newInstance();
+                fragment = ListUserIncidentFragment.newInstance();
             }else if (item.getItemId() == R.id.tentang) {
                 fragment = AboutFragment.newInstance();
             }

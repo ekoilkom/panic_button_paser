@@ -2,13 +2,19 @@ package id.ac.politanisamarinda.panicbutton.Model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class UserIncident {
+public class UserIncident{
 
 	@SerializedName("incident_id")
 	private int incidentId;
 
 	@SerializedName("updated_at")
 	private String updatedAt;
+
+	@SerializedName("foto")
+	private String foto;
+
+	@SerializedName("user_info")
+	private String userInfo;
 
 	@SerializedName("latitude")
 	private double latitude;
@@ -21,6 +27,15 @@ public class UserIncident {
 
 	@SerializedName("id")
 	private int id;
+
+	@SerializedName("user_data")
+	private User userData;
+
+	@SerializedName("deleted_at")
+	private String deletedAt;
+
+	@SerializedName("incident")
+	private Incident incident;
 
 	@SerializedName("longitude")
 	private double longitude;
@@ -39,6 +54,22 @@ public class UserIncident {
 
 	public String getUpdatedAt(){
 		return updatedAt;
+	}
+
+	public void setFoto(String foto){
+		this.foto = foto;
+	}
+
+	public String getFoto(){
+		return foto;
+	}
+
+	public void setUserInfo(String userInfo){
+		this.userInfo = userInfo;
+	}
+
+	public String getUserInfo(){
+		return userInfo;
 	}
 
 	public void setLatitude(double latitude){
@@ -73,6 +104,30 @@ public class UserIncident {
 		return id;
 	}
 
+	public void setUserData(User userData){
+		this.userData = userData;
+	}
+
+	public User getUserData(){
+		return userData;
+	}
+
+	public void setDeletedAt(String deletedAt){
+		this.deletedAt = deletedAt;
+	}
+
+	public String getDeletedAt(){
+		return deletedAt;
+	}
+
+	public void setIncident(Incident incident){
+		this.incident = incident;
+	}
+
+	public Incident getIncident(){
+		return incident;
+	}
+
 	public void setLongitude(double longitude){
 		this.longitude = longitude;
 	}
@@ -82,16 +137,21 @@ public class UserIncident {
 	}
 
 	@Override
- 	public String toString(){
-		return 
-			"UserIncident{" +
-			"incident_id = '" + incidentId + '\'' + 
-			",updated_at = '" + updatedAt + '\'' + 
-			",latitude = '" + latitude + '\'' + 
-			",user_data_id = '" + userDataId + '\'' + 
-			",created_at = '" + createdAt + '\'' + 
-			",id = '" + id + '\'' + 
-			",longitude = '" + longitude + '\'' + 
-			"}";
-		}
+	public String toString(){
+		return
+				"DataItem{" +
+						"incident_id = '" + incidentId + '\'' +
+						",updated_at = '" + updatedAt + '\'' +
+						",foto = '" + foto + '\'' +
+						",user_info = '" + userInfo + '\'' +
+						",latitude = '" + latitude + '\'' +
+						",user_data_id = '" + userDataId + '\'' +
+						",created_at = '" + createdAt + '\'' +
+						",id = '" + id + '\'' +
+						",user_data = '" + userData + '\'' +
+						",deleted_at = '" + deletedAt + '\'' +
+						",incident = '" + incident + '\'' +
+						",longitude = '" + longitude + '\'' +
+						"}";
+	}
 }
