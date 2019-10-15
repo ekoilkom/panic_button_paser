@@ -2,14 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="id.ac.politanisamarinda.panicbutton">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
-    <uses-feature
-        android:name="android.hardware.sensor.accelerometer"
-        android:required="true" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,13 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <receiver android:name=".Widget.PanicWidget">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-        </receiver>
-
-        <activity android:name=".LoginActivity" >
+        <activity android:name=".PopUpActivity" android:theme="@style/AppTheme.CustomTheme"></activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,18 +21,26 @@
         </activity>
         <activity
             android:name=".InsidentActivity"
-            android:theme="@style/AppTheme3">
-        </activity>
-
-        <activity
-            android:name=".HomeActivity">
-
-        </activity>
+            android:theme="@style/AppTheme3" />
+        <activity android:name=".HomeActivity" />
+        <receiver android:name=".Widget.PanicWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+        </receiver>
 
         <service
             android:name=".Service.ShakeService"
             android:enabled="true"
             android:exported="true" />
     </application>
+
+    <uses-feature
+        android:name="android.hardware.sensor.accelerometer"
+        android:required="true" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
 </manifest>

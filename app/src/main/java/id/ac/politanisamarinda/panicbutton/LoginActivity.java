@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import id.ac.politanisamarinda.panicbutton.API.EndPoint;
 import id.ac.politanisamarinda.panicbutton.API.RetrofitClient;
@@ -57,8 +58,10 @@ public class LoginActivity extends AppCompatActivity {
                     if(response.isSuccessful()) {
                         prefManager.setString(PrefManager.TOKEN, response.body().getLoginApi().getToken());
                         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                        onDestroy();
                         startActivity(intent);
+                        finish();
+                    }else {
+                        startActivity(new Intent(LoginActivity.this, PopUpActivity.class));
                     }
                 }
 
