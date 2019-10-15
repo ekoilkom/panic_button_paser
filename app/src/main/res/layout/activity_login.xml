@@ -71,7 +71,8 @@
             android:layout_height="55dp"
             android:text="Masuk"
             android:textColor="#fff"
-            android:background="@drawable/gradientcolor"/>
+            android:clickable="true"
+            android:background="@drawable/background"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
