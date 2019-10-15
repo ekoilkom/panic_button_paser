@@ -34,29 +34,31 @@
             android:orientation="vertical">
 
             <EditText
+                android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:background="@drawable/backroundtext"
                 android:drawableLeft="@drawable/emailicon"
                 android:drawablePadding="8dp"
-                android:paddingLeft="10dp"
-                android:inputType="textEmailAddress"
                 android:hint="Alamat E-Mail"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="10dp"
                 android:textColor="#000"
                 android:textSize="15dp" />
+
             <EditText
+                android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:drawableLeft="@drawable/lockicon"
-                android:paddingLeft="10dp"
-                android:drawablePadding="8dp"
-                android:textColor="#000"
-                android:hint="Sandi"
-                android:inputType="textPassword"
-                android:textSize="15dp"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/backroundtext"
-                />
+                android:drawableLeft="@drawable/lockicon"
+                android:drawablePadding="8dp"
+                android:hint="Sandi"
+                android:inputType="textPassword"
+                android:paddingLeft="10dp"
+                android:textColor="#000"
+                android:textSize="15dp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -65,14 +67,16 @@
                 android:layout_marginTop="10dp"
                 android:textColor="#fff"/>
         </LinearLayout>
+
         <Button
-            android:layout_marginTop="50dp"
+            android:id="@+id/bLogin"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:text="Masuk"
-            android:textColor="#fff"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/background"
             android:clickable="true"
-            android:background="@drawable/background"/>
+            android:text="Masuk"
+            android:textColor="#fff" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
