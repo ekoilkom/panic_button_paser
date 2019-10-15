@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import id.ac.politanisamarinda.panicbutton.IncidentFragment;
 import id.ac.politanisamarinda.panicbutton.InterfaceCallback.IncidentClickListener;
 import id.ac.politanisamarinda.panicbutton.Model.Incident;
 import id.ac.politanisamarinda.panicbutton.R;
@@ -61,14 +62,14 @@ public class IncidentAdapter extends RecyclerView.Adapter<IncidentAdapter.Incide
         public View itemView;
         public TextView textIncident;
         public ImageView imageIncident;
-        public String tanggal;
-        private Handler handler = new Handler();
 
         public IncidentViewHolder(@NonNull View itemView) {
             super(itemView);
             this.itemView = itemView;
             textIncident = itemView.findViewById(R.id.textIncident);
             imageIncident = itemView.findViewById(R.id.imageIncident);
+
+
         }
 
     }

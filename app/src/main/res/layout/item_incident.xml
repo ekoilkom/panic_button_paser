@@ -2,35 +2,39 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="2dp"
-    android:layout_margin="10dp">
->
+    app:cardCornerRadius="3dp"
+    android:layout_margin="3dp"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:elevation="10dp">
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="10dp">
+
         <ImageView
             android:id="@+id/imageIncident"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_gravity="center"
-            android:padding="2dp"
             android:visibility="visible" />
 
         <TextView
             android:id="@+id/textIncident"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:layout_toEndOf="@+id/imageIncident"
             android:text="Line 1"
             android:textAlignment="center"
-            android:textColor="@android:color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textColor="#535353"
+            android:textSize="17sp"
+            android:textStyle="bold"/>
 
     </LinearLayout>
 

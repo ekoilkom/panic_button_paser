@@ -9,4 +9,5 @@
     <color name="colorSwitch2">#B7FFA2</color>
     <color name="colorBgCardview">#AFAFAF</color>
     <color name="colorSwitch3">#E77E7E</color>
+    <color name="transparantColor">#00FFFFFF</color>
 </resources>

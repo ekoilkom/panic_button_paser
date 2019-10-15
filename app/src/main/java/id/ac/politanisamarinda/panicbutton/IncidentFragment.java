@@ -11,6 +11,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
@@ -18,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -32,6 +34,8 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import id.ac.politanisamarinda.panicbutton.API.EndPoint;
@@ -62,12 +66,18 @@ public class IncidentFragment extends Fragment implements EasyPermissions.Permis
     RecyclerView rv;
     IncidentAdapter adapter;
     SwitchCompat switchCompat;
+    String tanggal;
+    Menu menu = null;
+    Toolbar toolbar;
     private Double lang, lat;
     private FusedLocationProviderClient client;
+    private Handler handler = new Handler();
 
+    String nama;
     public IncidentFragment() {
         // Required empty public constructor
     }
+
 
     public static IncidentFragment newInstance() {
         IncidentFragment fragment = new IncidentFragment();
@@ -79,12 +89,23 @@ public class IncidentFragment extends Fragment implements EasyPermissions.Permis
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_incident, container, false);
-
+        handler.postDelayed(runnable,1000);
+        toolbar = view.findViewById(R.id.toolbar);
         switchCompat=view.findViewById(R.id.switch1);
         rv=view.findViewById(R.id.recycle_view);
         requestPermission();
         return view;
     }
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            Calendar c1 = Calendar.getInstance();
+            SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy/M/d h:m:s");
+            String strdate1 = sdf1.format(c1.getTime());
+            tanggal = strdate1;
+            handler.postDelayed(this, 1000);
+        }
+    };
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -93,13 +114,13 @@ public class IncidentFragment extends Fragment implements EasyPermissions.Permis
         if(getActivity()!=null){
             client = LocationServices.getFusedLocationProviderClient(getActivity());
             openPermission();
-
             rv.setHasFixedSize(true);
             rv.setLayoutManager(new GridLayoutManager(getActivity(),2));
             adapter = new IncidentAdapter(this);
+
+            ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
             rv.setAdapter(adapter);
             rv.addItemDecoration(new SimpleDividerItemDecoration(getContext()));
-
             getIncidents();
         }
     }
@@ -183,7 +204,32 @@ public class IncidentFragment extends Fragment implements EasyPermissions.Permis
 
     @Override
     public void onItemClick(Incident item) {
+        Toast.makeText(this.getContext(), "id : " + item.getId() + "l at : " + lat + " lang : " + lang  + "tanggal :" + tanggal, Toast.LENGTH_SHORT).show();
 
+    }
+
+    private void logout() {
+        Intent intent = new Intent(getContext(), LoginActivity.class);
+        startActivity(intent);
+
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.action_list:
+                logout();
+            default:
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        menu.clear();
+        inflater.inflate(R.menu.menubar, menu);
+        this.menu = menu;
+        MenuItem item = menu.findItem(R.menu.menubar);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
 
