@@ -11,8 +11,8 @@ import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import id.ac.politanisamarinda.panicbutton.HomeActivity;
 
-import id.ac.politanisamarinda.panicbutton.InsidentActivity;
 
 public class ShakeService extends Service implements SensorEventListener {
 
@@ -99,7 +99,7 @@ public class ShakeService extends Service implements SensorEventListener {
                     Log.d("sensor", "shake detected w/ speed: " + speed);
                     Toast.makeText(this, "shake detected w/ speed: " + speed, Toast.LENGTH_SHORT).show();
 
-                    Intent myIntent= new Intent(this, InsidentActivity.class);
+                    Intent myIntent= new Intent(this, HomeActivity.class);
                     myIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                      startActivity(myIntent);
                     ////Here start your activity and your application will be started

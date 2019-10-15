@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         prefManager=new PrefManager(this);
 
-        if(!prefManager.getString(PrefManager.TOKEN).equalsIgnoreCase("")){
+        if(!prefManager.getString(PrefManager.TOKEN).equalsIgnoreCase("v")){
             cekLoginApi(prefManager.getString(PrefManager.TOKEN));
         }
 
@@ -46,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+
     public void getLoginApi(String email,String password){
         try {
             EndPoint api = RetrofitClient.getClient().create(EndPoint.class);
@@ -56,6 +57,7 @@ public class LoginActivity extends AppCompatActivity {
                     if(response.isSuccessful()) {
                         prefManager.setString(PrefManager.TOKEN, response.body().getLoginApi().getToken());
                         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                        onDestroy();
                         startActivity(intent);
                     }
                 }

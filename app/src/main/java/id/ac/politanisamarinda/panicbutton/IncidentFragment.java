@@ -232,30 +232,4 @@ public class IncidentFragment extends Fragment implements EasyPermissions.Permis
             Log.d("eror","sa");
         }
     }
-
-    private void logout() {
-        Intent intent = new Intent(getContext(), LoginActivity.class);
-        startActivity(intent);
-
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()){
-            case R.id.action_list:
-                logout();
-            default:
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        menu.clear();
-        inflater.inflate(R.menu.menubar, menu);
-        this.menu = menu;
-        MenuItem item = menu.findItem(R.menu.menubar);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-
 }
