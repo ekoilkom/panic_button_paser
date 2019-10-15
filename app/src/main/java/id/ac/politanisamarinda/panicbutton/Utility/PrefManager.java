@@ -19,6 +19,7 @@ public class PrefManager {
         // Shared preferences file name
         private static final String PREF_NAME = "Secur-transact";
         public static final String TOKEN="token";
+        public static final String INCIDENT_ID="incident_id";
 
         private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
 

@@ -45,6 +45,9 @@ import id.ac.politanisamarinda.panicbutton.Adapter.SimpleDividerItemDecoration;
 import id.ac.politanisamarinda.panicbutton.InterfaceCallback.IncidentClickListener;
 import id.ac.politanisamarinda.panicbutton.Model.Incident;
 import id.ac.politanisamarinda.panicbutton.Model.ResponseIncidents;
+import id.ac.politanisamarinda.panicbutton.Model.ResponseUser;
+import id.ac.politanisamarinda.panicbutton.Model.ResponseUserIncident;
+import id.ac.politanisamarinda.panicbutton.Utility.PrefManager;
 import io.socket.client.IO;
 import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
@@ -72,6 +75,7 @@ public class IncidentFragment extends Fragment implements EasyPermissions.Permis
     private Double lang, lat;
     private FusedLocationProviderClient client;
     private Handler handler = new Handler();
+    PrefManager prefManager;
 
     String nama;
     public IncidentFragment() {
@@ -117,10 +121,10 @@ public class IncidentFragment extends Fragment implements EasyPermissions.Permis
             rv.setHasFixedSize(true);
             rv.setLayoutManager(new GridLayoutManager(getActivity(),2));
             adapter = new IncidentAdapter(this);
-
             ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
             rv.setAdapter(adapter);
             rv.addItemDecoration(new SimpleDividerItemDecoration(getContext()));
+            prefManager=new PrefManager(getActivity());
             getIncidents();
         }
     }
@@ -206,6 +210,27 @@ public class IncidentFragment extends Fragment implements EasyPermissions.Permis
     public void onItemClick(Incident item) {
         Toast.makeText(this.getContext(), "id : " + item.getId() + "l at : " + lat + " lang : " + lang  + "tanggal :" + tanggal, Toast.LENGTH_SHORT).show();
 
+        try {
+            EndPoint api = RetrofitClient.getClient().create(EndPoint.class);
+            Call<ResponseUserIncident> call = api.setUserIncident("Bearer "+prefManager.getString(PrefManager.TOKEN),item.getId(),lat,lang);
+            call.enqueue(new Callback<ResponseUserIncident>() {
+                @Override
+                public void onResponse(Call<ResponseUserIncident> call, Response<ResponseUserIncident> response) {
+                    if(response.isSuccessful()){
+                        prefManager.setInt(PrefManager.INCIDENT_ID,response.body().getUserIncident().getId());
+                        Toast.makeText(getActivity(), "insident : "+response.body().getUserIncident().getId(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ResponseUserIncident> call, Throwable t) {
+                    Log.d("eror","sa");
+                }
+            });
+        }
+        catch (Exception ex){
+            Log.d("eror","sa");
+        }
     }
 
     private void logout() {
@@ -231,7 +256,6 @@ public class IncidentFragment extends Fragment implements EasyPermissions.Permis
         MenuItem item = menu.findItem(R.menu.menubar);
         super.onCreateOptionsMenu(menu, inflater);
     }
-
 
 
 }

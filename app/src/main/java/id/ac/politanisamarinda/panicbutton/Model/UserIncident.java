@@ -11,7 +11,7 @@ public class UserIncident {
 	private String updatedAt;
 
 	@SerializedName("latitude")
-	private int latitude;
+	private double latitude;
 
 	@SerializedName("user_data_id")
 	private int userDataId;
@@ -23,7 +23,7 @@ public class UserIncident {
 	private int id;
 
 	@SerializedName("longitude")
-	private int longitude;
+	private double longitude;
 
 	public void setIncidentId(int incidentId){
 		this.incidentId = incidentId;
@@ -41,11 +41,11 @@ public class UserIncident {
 		return updatedAt;
 	}
 
-	public void setLatitude(int latitude){
+	public void setLatitude(double latitude){
 		this.latitude = latitude;
 	}
 
-	public int getLatitude(){
+	public double getLatitude(){
 		return latitude;
 	}
 
@@ -73,11 +73,11 @@ public class UserIncident {
 		return id;
 	}
 
-	public void setLongitude(int longitude){
+	public void setLongitude(double longitude){
 		this.longitude = longitude;
 	}
 
-	public int getLongitude(){
+	public double getLongitude(){
 		return longitude;
 	}
 

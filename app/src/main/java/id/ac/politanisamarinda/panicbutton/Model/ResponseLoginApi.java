@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class ResponseLoginApi{
 
-	@SerializedName("loginApi")
+	@SerializedName("data")
 	private LoginApi loginApi;
 
 	@SerializedName("success")
