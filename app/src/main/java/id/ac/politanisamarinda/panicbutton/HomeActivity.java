@@ -14,10 +14,20 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import id.ac.politanisamarinda.panicbutton.Service.ShakeService;
+import id.ac.politanisamarinda.panicbutton.Utility.PrefManager;
+import pub.devrel.easypermissions.AfterPermissionGranted;
+import pub.devrel.easypermissions.AppSettingsDialog;
+import pub.devrel.easypermissions.EasyPermissions;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
 public class HomeActivity extends AppCompatActivity  {
     private final String SELECTED_MENU = "selected_menu";
     private BottomNavigationView navView;
+    PrefManager prefManager;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -50,6 +60,7 @@ public class HomeActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_home);
         navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        prefManager=new PrefManager(this);
 
         if (savedInstanceState != null) {
             savedInstanceState.getInt(SELECTED_MENU);
@@ -63,8 +74,10 @@ public class HomeActivity extends AppCompatActivity  {
 
     // Ini Adalah Bagian Toolbar
     private void logout() {
+        prefManager.setString(prefManager.TOKEN ,"v");
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
+        onDestroy();
     }
 
     @Override
