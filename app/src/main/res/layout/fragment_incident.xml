@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".InsidentActivity"
-    android:background="@drawable/gradientcolor"
+    android:background="#D7FFD8"
     >
 
     <include

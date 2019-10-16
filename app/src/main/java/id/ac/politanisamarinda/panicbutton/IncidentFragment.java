@@ -123,7 +123,7 @@ public class IncidentFragment extends Fragment implements EasyPermissions.Permis
             adapter = new IncidentAdapter(this);
             ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
             rv.setAdapter(adapter);
-            rv.addItemDecoration(new SimpleDividerItemDecoration(getContext()));
+        //    rv.addItemDecoration(new SimpleDividerItemDecoration(getContext()));
             prefManager=new PrefManager(getActivity());
             getIncidents();
         }

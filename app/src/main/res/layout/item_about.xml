@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".AboutFragment"
-    android:layout_margin="20dp" >
+    android:layout_margin="2dp" >
     <LinearLayout
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
@@ -12,17 +12,20 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center">
+
         <ImageView
             android:id="@+id/gambarabout"
             android:layout_width="140dp"
             android:layout_height="140dp"
             android:src="@drawable/foto_riko" />
+
         <TextView
             android:id="@+id/nama"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Riko Raynol Hasan"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            android:textStyle="bold"/>
 
 <!--        <androidx.cardview.widget.CardView-->
 <!--            android:layout_width="140dp"-->
