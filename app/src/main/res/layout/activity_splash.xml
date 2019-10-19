@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".SplashActivity"
-    android:background="#FFF3BA"
+    android:background="@drawable/tugu2"
     android:gravity="center">
 
 
@@ -15,6 +15,4 @@
         android:layout_height="131dp"
         android:elevation="100dp"
         android:src="@drawable/logokecil" />
-
-
 </LinearLayout>
