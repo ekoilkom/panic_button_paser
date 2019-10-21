@@ -5,8 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".InsidentActivity"
-    android:background="#D7FFD8"
+    android:background="#EBF8E9"
     >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="203dp"
+        android:alpha="0.5"
+        android:background="@drawable/tes_bg"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout"
+        tools:ignore="MissingConstraints" />
 
     <include
         android:id="@+id/toolbar"
