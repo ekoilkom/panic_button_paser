@@ -25,7 +25,7 @@ public class UserIncident{
 	private int userDataId;
 
 	@SerializedName("created_at")
-	private Date createdAt;
+	private String createdAt;
 
 	@SerializedName("id")
 	private int id;
@@ -90,11 +90,11 @@ public class UserIncident{
 		return userDataId;
 	}
 
-	public void setCreatedAt(Date createdAt){
+	public void setCreatedAt(String createdAt){
 		this.createdAt = createdAt;
 	}
 
-	public Date getCreatedAt(){
+	public String getCreatedAt(){
 		return createdAt;
 	}
 
