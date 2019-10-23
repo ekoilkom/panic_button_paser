@@ -69,7 +69,7 @@ public class ListUserIncidentFragment extends Fragment implements UserIncidentCl
             rvListUserIncident.setLayoutManager(new LinearLayoutManager(getContext()));
             adapter = new UserIncidentAdapter(this);
             rvListUserIncident.setAdapter(adapter);
-            rvListUserIncident.addItemDecoration(new SimpleDividerItemDecoration(getContext()));
+//            rvListUserIncident.addItemDecoration(new SimpleDividerItemDecoration(getContext()));
             prefManager=new PrefManager(getActivity());
             getListUserIncidents();
         }

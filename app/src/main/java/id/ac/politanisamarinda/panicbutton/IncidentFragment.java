@@ -2,6 +2,8 @@ package id.ac.politanisamarinda.panicbutton;
 
 
 import android.Manifest;
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
 import android.media.Ringtone;
@@ -33,10 +35,12 @@ import android.widget.Toast;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Objects;
 
 import id.ac.politanisamarinda.panicbutton.API.EndPoint;
 import id.ac.politanisamarinda.panicbutton.API.RetrofitClient;
@@ -72,6 +76,8 @@ public class IncidentFragment extends Fragment implements EasyPermissions.Permis
     String tanggal;
     Menu menu = null;
     Toolbar toolbar;
+    TextView tName,tEmail;
+    Context context;
     private Double lang, lat;
     private FusedLocationProviderClient client;
     private Handler handler = new Handler();
@@ -93,10 +99,13 @@ public class IncidentFragment extends Fragment implements EasyPermissions.Permis
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_incident, container, false);
+        context=getContext();
         handler.postDelayed(runnable,1000);
         toolbar = view.findViewById(R.id.toolbar);
         switchCompat=view.findViewById(R.id.switch1);
-        rv=view.findViewById(R.id.recycle_view);
+        tName = view.findViewById(R.id.name);
+        tEmail = view.findViewById(R.id.email);
+                rv=view.findViewById(R.id.recycle_view);
         requestPermission();
         return view;
     }

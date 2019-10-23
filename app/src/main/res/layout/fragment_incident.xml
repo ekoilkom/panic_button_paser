@@ -1,100 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".InsidentActivity"
-    android:background="#EBF8E9"
-    >
+    android:background="@android:color/white">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="203dp"
-        android:alpha="0.5"
-        android:background="@drawable/tes_bg"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout"
-        tools:ignore="MissingConstraints" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        android:padding="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button"
-            android:visibility="gone" />
-
-        <TextView
-            android:id="@+id/textView3"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:visibility="gone" />
+            android:layout_height="340dp"
+            android:background="@drawable/background_home"/>
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:visibility="gone" />
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
             android:orientation="vertical"
-            android:padding="50dp">
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/switch1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textOff="Off"
-                android:textOn="On"
-                app:switchTextAppearance="@style/SwitchTextAppearance"
-                android:thumb="@drawable/sw_thumb"
-                app:showText="true"
-                app:track="@drawable/sw_track" />
-
-        </LinearLayout>
-
-        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
+            android:layout_height="match_parent">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Silahkan pilih bencana"
-                android:padding="10dp"
-                android:textColor="#fff"
-                android:background="@drawable/background"/>
+                android:orientation="horizontal"
+                android:gravity="center|start"
+                android:layout_marginTop="24dp">
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/logo_full_color"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Panic Button"
+                    android:fontFamily="@font/nunito_extra_bold"
+                    android:textSize="32sp"
+                    android:textColor="@android:color/white"
+                    android:layout_marginStart="8dp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tanggap darurat panggilan bahaya dan bencana secara online dan realtime.  "
+                android:fontFamily="@font/nunito_semibold"
+                android:textSize="14sp"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="4dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_back_border_200"
+                android:layout_marginTop="32dp"
+                android:elevation="4dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/foto_riko"
+                    android:elevation="4dp"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center|start"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp">
+
+                    <TextView
+                        android:id="@+id/name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="anoname"
+                        android:fontFamily="@font/nunito_extra_bold"
+                        android:textSize="14sp"
+                        android:textColor="@android:color/white"/>
+
+                    <TextView
+                        android:id="@+id/email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="anoname@gmai.com"
+                        android:fontFamily="@font/nunito_semibold"
+                        android:textSize="12sp"
+                        tools:ignore="SmallSp"
+                        android:layout_marginTop="-3dp"
+                        android:textColor="@android:color/white"/>
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switch1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textOff="OFF"
+                    android:textOn="ON"
+                    app:switchTextAppearance="@style/SwitchTextAppearance"
+                    android:thumb="@drawable/sw_thumb"
+                    app:showText="true"
+                    app:track="@drawable/sw_track"
+                    android:layout_marginEnd="10dp"/>
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="32dp"
+                android:id="@+id/recycle_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical"
+                tools:listitem="@layout/item_incident"/>
+
         </LinearLayout>
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_marginTop="10dp"
-            android:id="@+id/recycle_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="vertical" />
 
-    </LinearLayout>
+    </FrameLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

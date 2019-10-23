@@ -44,7 +44,9 @@ public class IncidentAdapter extends RecyclerView.Adapter<IncidentAdapter.Incide
     @Override
     public void onBindViewHolder(@NonNull final IncidentViewHolder holder, final int position) {
         holder.textIncident.setText(incidents.get(position).getNama());
-        Picasso.get().load("http://panic.britech.id/"+incidents.get(position).getFoto()).into(holder.imageIncident);
+        Picasso.get().load("http://panic.britech.id/"+incidents.get(position).getFoto())
+                .resize(150, 150)
+                .into(holder.imageIncident);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -2,41 +2,38 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:card_view="http://schemas.android.com/tools"
-    app:cardCornerRadius="13dp"
-    android:layout_margin="5dp"
+    app:cardCornerRadius="28dp"
+    android:layout_margin="8dp"
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
-    android:elevation="10dp"
-    android:id="@+id/cv">
-
+    android:elevation="4dp"
+    android:id="@+id/cv"
+    android:focusable="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="16dp"
+        android:gravity="center">
 
         <ImageView
             android:id="@+id/imageIncident"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_gravity="center"
-            android:visibility="visible" />
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:visibility="visible"
+            android:layout_marginTop="8dp"/>
 
         <TextView
             android:id="@+id/textIncident"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:layout_toEndOf="@+id/imageIncident"
-            android:text="Line 1"
-            android:textAlignment="center"
-            android:textColor="#535353"
-            android:textSize="17sp"
-            android:textStyle="bold"/>
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp"
+            android:text="TEXT"
+            android:fontFamily="@font/nunito_extra_bold" />
 
     </LinearLayout>
 

@@ -11,8 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TimeZone;
 
 import id.ac.politanisamarinda.panicbutton.InterfaceCallback.IncidentClickListener;
 import id.ac.politanisamarinda.panicbutton.InterfaceCallback.UserIncidentClickListener;
@@ -43,7 +45,16 @@ public class UserIncidentAdapter extends RecyclerView.Adapter<UserIncidentAdapte
     @Override
     public void onBindViewHolder(@NonNull final IncidentViewHolder holder, final int position) {
         holder.textIncident.setText(userIncidentList.get(position).getIncident().getNama());
-        holder.textTanggal.setText(userIncidentList.get(position).getCreatedAt());
+
+//        SimpleDateFormat formatOutgoing2 = new SimpleDateFormat("EEEE, dd MMM yyyy - HH:mm a");
+//        TimeZone tz2 = TimeZone.getTimeZone("Asia/Jakarta");
+//        formatOutgoing2.setTimeZone(tz2);
+//
+//        String created=formatOutgoing2.format(userIncidentList.get(position).getCreatedAt());
+//        holder.textTanggal.setText(created);
+
+        holder.txtLatitude.setText(String.valueOf(userIncidentList.get(position).getLatitude()));
+        holder.txtLongitude.setText(String.valueOf(userIncidentList.get(position).getLongitude()));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,12 +72,16 @@ public class UserIncidentAdapter extends RecyclerView.Adapter<UserIncidentAdapte
         public View itemView;
         public TextView textIncident;
         public TextView textTanggal;
+        public TextView txtLatitude;
+        public TextView txtLongitude;
 
         public IncidentViewHolder(@NonNull View itemView) {
             super(itemView);
             this.itemView = itemView;
             textIncident = itemView.findViewById(R.id.tvIncident);
             textTanggal = itemView.findViewById(R.id.tvTanggal);
+            txtLatitude = itemView.findViewById(R.id.latitude);
+            txtLongitude = itemView.findViewById(R.id.longitude);
 
 
         }

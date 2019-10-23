@@ -56,10 +56,16 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<ResponseLoginApi> call, Response<ResponseLoginApi> response) {
                     if(response.isSuccessful()) {
-                        prefManager.setString(PrefManager.TOKEN, response.body().getLoginApi().getToken());
-                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                        startActivity(intent);
-                        finish();
+                        if(response.body().isSuccess()) {
+//                        prefManager.setString(PrefManager.TOKEN, response.body().getLoginApi().getToken());
+                            PrefManager prf = new PrefManager(getApplicationContext());
+                            prf.setString("token", response.body().getLoginApi().getToken());
+                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                            startActivity(intent);
+                            finish();
+                        } else {
+
+                        }
                     }else {
                         startActivity(new Intent(LoginActivity.this, PopUpActivity.class));
                     }

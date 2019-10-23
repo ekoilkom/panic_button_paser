@@ -2,6 +2,8 @@ package id.ac.politanisamarinda.panicbutton.Model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Date;
+
 public class UserIncident{
 
 	@SerializedName("incident_id")
@@ -23,7 +25,7 @@ public class UserIncident{
 	private int userDataId;
 
 	@SerializedName("created_at")
-	private String createdAt;
+	private Date createdAt;
 
 	@SerializedName("id")
 	private int id;
@@ -88,11 +90,11 @@ public class UserIncident{
 		return userDataId;
 	}
 
-	public void setCreatedAt(String createdAt){
+	public void setCreatedAt(Date createdAt){
 		this.createdAt = createdAt;
 	}
 
-	public String getCreatedAt(){
+	public Date getCreatedAt(){
 		return createdAt;
 	}
 

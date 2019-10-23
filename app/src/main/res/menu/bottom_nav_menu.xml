@@ -3,16 +3,16 @@
 
     <item
         android:id="@+id/panic_home"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_home" />
+        android:icon="@drawable/ic_home"
+        android:title="Go Panic" />
 
     <item
         android:id="@+id/list_berita"
-        android:icon="@drawable/ic_receipt_black_24dp"
-        android:title="@string/title_listberita" />
+        android:icon="@drawable/ic_history"
+        android:title="Riwayat" />
 
     <item
         android:id="@+id/tentang"
-        android:icon="@drawable/ic_help_outline_black_24dp"
+        android:icon="@drawable/ic_about"
         android:title="@string/title_tentang" />
 </menu>

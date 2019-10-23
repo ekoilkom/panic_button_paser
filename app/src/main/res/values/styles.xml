@@ -25,6 +25,7 @@
 
     <style name="SwitchTextAppearance" parent="@android:style/TextAppearance.Holo.Small">
         <item name="android:textColor">#fff</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="AppTheme.CustomTheme">
