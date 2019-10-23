@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center|start"
-                android:layout_marginTop="24dp">
+                android:layout_marginTop="18dp">
 
                 <ImageView
                     android:layout_width="36dp"
@@ -59,7 +59,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_back_border_200"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="38dp"
                 android:elevation="4dp">
 
                 <ImageView
@@ -68,7 +68,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
-                    android:src="@drawable/foto_riko"
+                    android:src="@drawable/ic_user"
                     android:elevation="4dp"/>
 
                 <LinearLayout
@@ -92,7 +92,7 @@
                         android:id="@+id/email"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="anoname@gmai.com"
+                        android:text="anoname@gmail.com"
                         android:fontFamily="@font/nunito_semibold"
                         android:textSize="12sp"
                         tools:ignore="SmallSp"
@@ -112,7 +112,8 @@
                     android:thumb="@drawable/sw_thumb"
                     app:showText="true"
                     app:track="@drawable/sw_track"
-                    android:layout_marginEnd="10dp"/>
+                    android:layout_marginEnd="10dp"
+                    android:elevation="3dp"/>
 
             </LinearLayout>
 
