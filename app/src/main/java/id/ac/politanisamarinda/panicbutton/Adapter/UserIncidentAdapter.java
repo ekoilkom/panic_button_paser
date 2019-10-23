@@ -46,12 +46,12 @@ public class UserIncidentAdapter extends RecyclerView.Adapter<UserIncidentAdapte
     public void onBindViewHolder(@NonNull final IncidentViewHolder holder, final int position) {
         holder.textIncident.setText(userIncidentList.get(position).getIncident().getNama());
 
-//        SimpleDateFormat formatOutgoing2 = new SimpleDateFormat("EEEE, dd MMM yyyy - HH:mm a");
-//        TimeZone tz2 = TimeZone.getTimeZone("Asia/Jakarta");
-//        formatOutgoing2.setTimeZone(tz2);
-//
-//        String created=formatOutgoing2.format(userIncidentList.get(position).getCreatedAt());
-//        holder.textTanggal.setText(created);
+        SimpleDateFormat formatOutgoing2 = new SimpleDateFormat("EEEE, dd MMM yyyy - HH:mm a");
+        TimeZone tz2 = TimeZone.getTimeZone("Asia/Jakarta");
+        formatOutgoing2.setTimeZone(tz2);
+
+        String created=formatOutgoing2.format(userIncidentList.get(position).getCreatedAt());
+        holder.textTanggal.setText(created);
 
         holder.txtLatitude.setText(String.valueOf(userIncidentList.get(position).getLatitude()));
         holder.txtLongitude.setText(String.valueOf(userIncidentList.get(position).getLongitude()));
