@@ -16,7 +16,9 @@
         <activity
             android:name=".PopUpActivity"
             android:theme="@style/AppTheme.CustomTheme" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".LoginActivity"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/ThemeFullSCreen"/>
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
