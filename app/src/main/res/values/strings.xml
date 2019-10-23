@@ -11,7 +11,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="desc">Adalah aplikasi yang data melaporkan keadaan darurat yang terjadi, dan akan langsung diterima oleh pemerintah daerah dengan langsung mendapatkan informasi mengenai pelaporan, titik lokasi kejadian, kejadian apa yang terjadi, dan akan sesegera munchkin juga ditariam dan ditangani ole petugas.</string>
     <string name="more">
-        Pelaporan dan penginformasian lokasi keadaaan darurat menjadi lebih tepat dan akurat karena aplikasi ini berbasis GPS\n\n
-Keadaan darurat dapat ditangani secara tepat guna dan \n\n
+        Pelaporan dan penginformasian lokasi keadaaan darurat menjadi lebih tepat dan akurat karena aplikasi ini berbasis GPS\n\nKeadaan darurat dapat ditangani secara tepat guna dan efektif karena langsung ditangani oleh pihak yang bertanggung jawab dalam bidangnya. \n\nPelaporan dan penginformasian  keadaan darurat  secara cepat dan tepat sehingga memberikan dampak positif karena dapat mengurangi resiko kerusakan dan kerugian secara materil atau korban jiwa.\n\n
     </string>
 </resources>
