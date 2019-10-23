@@ -74,7 +74,7 @@ public class HomeActivity extends AppCompatActivity  {
 
     // Ini Adalah Bagian Toolbar
     private void logout() {
-        prefManager.setString(prefManager.TOKEN ,"v");
+        prefManager.remove(prefManager.TOKEN);
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
         onDestroy();

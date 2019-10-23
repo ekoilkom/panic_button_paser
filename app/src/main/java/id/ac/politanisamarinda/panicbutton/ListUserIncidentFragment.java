@@ -1,6 +1,7 @@
 package id.ac.politanisamarinda.panicbutton;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -84,8 +85,15 @@ public class ListUserIncidentFragment extends Fragment implements UserIncidentCl
             call.enqueue(new Callback<ResponseListUserIncident>() {
                 @Override
                 public void onResponse(Call<ResponseListUserIncident> call, Response<ResponseListUserIncident> response) {
-                    List<UserIncident> userIncidentList = response.body().getListUserIncident();
-                    adapter.setUserIncidentList(userIncidentList);
+                    if(response.isSuccessful()){
+                        List<UserIncident> userIncidentList = response.body().getListUserIncident();
+                        adapter.setUserIncidentList(userIncidentList);
+                    }else if(response.code()==401) {
+                        prefManager.remove(prefManager.TOKEN);
+                        Intent intent = new Intent(getActivity(), LoginActivity.class);
+                        startActivity(intent);
+                        onDestroy();
+                    }
                 }
 
                 @Override
