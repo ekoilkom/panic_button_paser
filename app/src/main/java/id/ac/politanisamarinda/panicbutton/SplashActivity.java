@@ -22,12 +22,12 @@ public class SplashActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         prefManager=new PrefManager(this);
-        if(!prefManager.getString(PrefManager.TOKEN).equalsIgnoreCase("v")){
+        if(!prefManager.getString(PrefManager.TOKEN).equalsIgnoreCase("")){
             Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
             startActivity(intent);
             finish();
         }
-        if (prefManager.getString(PrefManager.TOKEN).equalsIgnoreCase("v")){
+        if (prefManager.getString(PrefManager.TOKEN).equalsIgnoreCase("")){
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {

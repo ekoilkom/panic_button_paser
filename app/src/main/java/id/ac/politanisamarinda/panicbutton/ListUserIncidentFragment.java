@@ -91,8 +91,9 @@ public class ListUserIncidentFragment extends Fragment implements UserIncidentCl
                     }else if(response.code()==401) {
                         prefManager.remove(prefManager.TOKEN);
                         Intent intent = new Intent(getActivity(), LoginActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
-                        onDestroy();
+
                     }
                 }
 
