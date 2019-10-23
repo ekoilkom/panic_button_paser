@@ -10,7 +10,7 @@ public class UserIncident{
 	private int incidentId;
 
 	@SerializedName("updated_at")
-	private String updatedAt;
+	private Date updatedAt;
 
 	@SerializedName("foto")
 	private String foto;
@@ -25,7 +25,7 @@ public class UserIncident{
 	private int userDataId;
 
 	@SerializedName("created_at")
-	private String createdAt;
+	private Date createdAt;
 
 	@SerializedName("id")
 	private int id;
@@ -50,11 +50,11 @@ public class UserIncident{
 		return incidentId;
 	}
 
-	public void setUpdatedAt(String updatedAt){
+	public void setUpdatedAt(Date updatedAt){
 		this.updatedAt = updatedAt;
 	}
 
-	public String getUpdatedAt(){
+	public Date getUpdatedAt(){
 		return updatedAt;
 	}
 
@@ -90,11 +90,11 @@ public class UserIncident{
 		return userDataId;
 	}
 
-	public void setCreatedAt(String createdAt){
+	public void setCreatedAt(Date createdAt){
 		this.createdAt = createdAt;
 	}
 
-	public String getCreatedAt(){
+	public Date getCreatedAt(){
 		return createdAt;
 	}
 
